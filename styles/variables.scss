@@ -1,0 +1,40 @@
+:root {
+  --bg-base: #0a0610;
+  --bg-deep: #07040c;
+  --bg-card: rgba(28, 16, 38, 0.55);
+  --bg-card-strong: rgba(34, 19, 46, 0.78);
+
+  --pink: #ff4d8d;
+  --pink-soft: #ff86b3;
+  --red: #e0245e;
+  --blue: #4d9fff;
+  --blue-soft: #8ec5ff;
+  --violet: #a05cff;
+  --violet-soft: #c9a4ff;
+
+  --text: #f4eef7;
+  --text-dim: #b7a8c4;
+  --text-muted: #7c6e8c;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --grad-hot: linear-gradient(135deg, var(--pink) 0%, var(--red) 55%, var(--violet) 100%);
+  --grad-cool: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%);
+  --grad-text: linear-gradient(120deg, #ffffff 0%, var(--pink-soft) 45%, var(--violet-soft) 100%);
+
+  --glow-pink: 0 0 40px rgba(255, 77, 141, 0.45);
+  --glow-blue: 0 0 40px rgba(77, 159, 255, 0.4);
+  --glow-violet: 0 0 60px rgba(160, 92, 255, 0.35);
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+
+  --max-width: 1200px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-gap: clamp(5rem, 12vw, 9rem);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
