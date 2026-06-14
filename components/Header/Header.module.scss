@@ -1,0 +1,68 @@
+@use "mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-block: 0.75rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 4, 12, 0.85),
+    rgba(7, 4, 12, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.inner {
+  @include shell;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  --logo-h: clamp(36px, 6vw, 45px);
+}
+
+.nav {
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 2rem);
+
+  @include tablet-down {
+    display: none;
+  }
+}
+
+.link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  transition: color 0.25s var(--ease);
+
+  &:hover {
+    color: var(--text);
+  }
+}
+
+.cta {
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #fff;
+  background: var(--grad-hot);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--glow-pink);
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px rgba(255, 77, 141, 0.6);
+  }
+}

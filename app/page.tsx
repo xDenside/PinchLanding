@@ -1,7 +1,12 @@
+import Header from "@/components/Header/Header";
+
 export default function Home() {
   return (
-    <main>
-      <h1>Pinch</h1>
-    </main>
+    <>
+      <Header />
+      <main>
+        <h1>Pinch</h1>
+      </main>
+    </>
   );
 }
