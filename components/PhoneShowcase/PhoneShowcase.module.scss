@@ -1,0 +1,84 @@
+@use "mixins" as *;
+
+.phone {
+  position: relative;
+  width: min(320px, 78vw);
+  aspect-ratio: 9 / 19.5;
+}
+
+.glow {
+  position: absolute;
+  inset: -14% -22%;
+  z-index: 0;
+  background: radial-gradient(
+    50% 50% at 50% 45%,
+    rgba(255, 77, 141, 0.4),
+    rgba(160, 92, 255, 0.18) 55%,
+    transparent 75%
+  );
+  filter: blur(10px);
+  animation: phone-glow 6s ease-in-out infinite alternate;
+
+  @include reduce-motion {
+    animation: none;
+  }
+}
+
+.frame {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 0.55rem;
+  border-radius: 2.6rem;
+  background: linear-gradient(160deg, #2a1b34, #0c0712 60%);
+  border: 1px solid var(--border-strong);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 40px 90px -40px rgba(0, 0, 0, 0.95),
+    var(--glow-violet);
+  transform: rotate(-3deg);
+  transition: transform 0.6s var(--ease);
+  animation: phone-float 7s ease-in-out infinite;
+
+  &:hover {
+    transform: rotate(0deg) translateY(-6px) scale(1.02);
+  }
+
+  @include reduce-motion {
+    animation: none;
+    transform: rotate(-3deg);
+  }
+}
+
+.screen {
+  position: relative;
+  height: 100%;
+  border-radius: 2.1rem;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+
+.shot {
+  object-fit: cover;
+}
+
+@keyframes phone-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+@keyframes phone-glow {
+  0% {
+    opacity: 0.65;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}

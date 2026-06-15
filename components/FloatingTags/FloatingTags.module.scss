@@ -1,0 +1,85 @@
+@use "mixins" as *;
+
+.field {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.tag {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-size: clamp(0.78rem, 1.6vw, 0.95rem);
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text);
+  @include glass(var(--bg-card-strong), 14px);
+  animation: tag-float 6s ease-in-out infinite;
+
+  @include reduce-motion {
+    animation: none;
+  }
+
+  @include mobile-down {
+    &.violet,
+    &.pin {
+      display: none;
+    }
+  }
+}
+
+.like,
+.star {
+  width: 2.9rem;
+  height: 2.9rem;
+  padding: 0;
+  justify-content: center;
+  aspect-ratio: 1;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.like {
+  background: var(--grad-hot);
+  box-shadow: var(--glow-pink);
+}
+
+.star {
+  background: var(--grad-cool);
+  box-shadow: var(--glow-blue);
+}
+
+.violet {
+  color: var(--violet-soft);
+  border-color: rgba(160, 92, 255, 0.4);
+}
+
+.blue {
+  color: var(--blue-soft);
+  border-color: rgba(77, 159, 255, 0.4);
+}
+
+.plus {
+  color: #ffd27a;
+  border-color: rgba(255, 180, 80, 0.4);
+}
+
+.pin {
+  color: var(--pink-soft);
+  border-color: rgba(255, 77, 141, 0.4);
+}
+
+@keyframes tag-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1.5deg);
+  }
+}
