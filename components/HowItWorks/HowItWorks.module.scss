@@ -1,0 +1,146 @@
+@use "mixins" as *;
+
+.how {
+  padding-block: var(--section-gap);
+}
+
+.inner {
+  @include shell;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.6rem);
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: clamp(1.6rem, 3vw, 2.2rem);
+  border-radius: var(--radius-lg);
+  @include glass;
+
+  &:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 50%;
+    right: -1.1rem;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: var(--text-muted);
+
+    @include tablet-down {
+      content: none;
+    }
+  }
+}
+
+.num {
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  @include gradient-text(var(--grad-cool));
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    140deg,
+    rgba(77, 159, 255, 0.18),
+    rgba(160, 92, 255, 0.16)
+  );
+  border: 1px solid var(--border);
+}
+
+.svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  fill: none;
+  stroke: var(--pink-soft);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+
+.draw {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: draw 2s var(--ease) forwards;
+
+  @include reduce-motion {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
+.drawHeart {
+  fill: rgba(255, 77, 141, 0.15);
+  stroke: var(--pink);
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation:
+    draw 1.8s var(--ease) forwards,
+    heart-beat 2.4s var(--ease) 1.8s infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+
+  @include reduce-motion {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
+.blink {
+  fill: var(--pink-soft);
+  stroke: none;
+  animation: blink 1.4s ease-in-out infinite;
+
+  @include reduce-motion {
+    animation: none;
+  }
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes heart-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
