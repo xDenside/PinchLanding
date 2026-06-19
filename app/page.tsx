@@ -5,6 +5,8 @@ import Features from "@/components/Features/Features";
 import HowItWorks from "@/components/HowItWorks/HowItWorks";
 import ProductStack from "@/components/ProductStack/ProductStack";
 import ScreenshotGallery from "@/components/ScreenshotGallery/ScreenshotGallery";
+import FinalCta from "@/components/FinalCta/FinalCta";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -17,7 +19,9 @@ export default function Home() {
         <HowItWorks />
         <ProductStack />
         <ScreenshotGallery />
+        <FinalCta />
       </main>
+      <Footer />
     </>
   );
 }

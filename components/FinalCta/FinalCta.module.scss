@@ -1,0 +1,117 @@
+@use "mixins" as *;
+
+.cta {
+  padding-block: var(--section-gap);
+}
+
+.inner {
+  @include shell;
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: center;
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  @include glass(var(--bg-card-strong), 22px);
+  background-image: radial-gradient(
+    80% 120% at 50% 0%,
+    rgba(255, 77, 141, 0.22),
+    transparent 60%
+  );
+}
+
+.spark {
+  position: absolute;
+  inset: -50%;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 77, 141, 0.18) 60deg,
+    transparent 120deg,
+    rgba(160, 92, 255, 0.18) 200deg,
+    transparent 280deg
+  );
+  animation: spin 16s linear infinite;
+
+  @include reduce-motion {
+    animation: none;
+  }
+}
+
+.title,
+.text,
+.accent,
+.button,
+.handle {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+
+.accent {
+  @include gradient-text(var(--grad-hot));
+}
+
+.text {
+  color: var(--text-dim);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  max-width: 42ch;
+}
+
+.button {
+  margin-top: 0.5rem;
+  padding: 1.05rem 2.4rem;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+  background: var(--grad-hot);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: var(--glow-pink);
+  transition: transform 0.25s var(--ease);
+  animation: cta-glow 3s ease-in-out infinite;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  @include reduce-motion {
+    animation: none;
+  }
+}
+
+.handle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cta-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 30px rgba(255, 77, 141, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(255, 77, 141, 0.75);
+  }
+}
