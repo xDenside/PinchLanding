@@ -51,3 +51,5 @@ public/screenshots  скриншоты приложения
 взяты из приложения, анкеты на них — заглушки.
 
 ## Деплой
+
+https://pinch-landing-theta.vercel.app/
